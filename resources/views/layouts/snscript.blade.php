@@ -1,0 +1,3 @@
+<script>
+    $('#summernote').summernote();
+</script>

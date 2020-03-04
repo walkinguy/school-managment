@@ -1,0 +1,232 @@
+body {
+  font-family: "Montserrat", "sans-seri";
+  margin: 0;
+  padding: 0;
+  font-size:100%;
+}
+
+.header {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  background-color: #d12200;
+  margin: 0;
+  color: white;
+  position: relative;
+  width: 100%;
+  top: 0;
+  padding: 5px;
+  display: flex;
+}
+
+.navlist {
+  display: flex;
+  flex-direction: row;
+  margin-top: 6px;
+  margin-left: 700px;
+  position: relative;
+}
+
+.navbar h3 {
+  text-transform: uppercase;
+  font-size: 20px;
+  padding-left: 40px;
+}
+
+ul {
+  list-style-type: none;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.nav li a {
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+  color: white;
+  padding-left: 100px;
+}
+
+.navbar ul {
+  list-style-type: none;
+  display: block;
+}
+
+.banner img {
+  width: 100%;
+  height: auto;
+  margin: 0;
+}
+
+.headings {
+  color: white;
+  position: absolute;
+  justify-content: center;
+  animation-name: headings-animation;
+  animation-duration: 1s;
+  top: 100px;
+  padding: 45px;
+  z-index: 1;
+}
+
+.headings h1 {
+    position: relative;
+  font-size: 5rem;
+  line-height: 10px;
+}
+
+@keyframes headings-animation {
+  from {
+    top: -40px;
+    opacity: 0%;
+  }
+  to {
+    top: 100px;
+    opacity: 100%;
+  }
+}
+
+.headings h4 {
+  font-size: 3rem;
+position: relative;
+  line-height: 10px;
+  margin-left: 2px;
+}
+
+.search-box {
+  position: absolute;
+  background-color: white;
+  top: 500px;
+  margin-left: 55px;
+  width: 30em;
+  height: 15em;
+  border-radius: 40px;
+  padding: 40px;
+  animation-name: search-box-animation;
+  animation-duration: 1s;
+}
+
+@keyframes search-box-animation {
+  from {
+    top: 0px;
+    opacity: 0%;
+  }
+  to {
+    top: 500px;
+    opacity: 100%;
+  }
+}
+
+.search-title {
+  font-weight: bold;
+  font-size: 30px;
+  margin: 0;
+  padding-bottom: 40px;
+}
+
+.search-box input[type="text"] {
+  border: 1px solid black;
+  padding-left: 30px;
+  width: 90%;
+  height: 25%;
+  font-size: 20px;
+  border-radius: 30px;
+  border-style: dashed;
+  outline: none;
+}
+
+.search-btn {
+  color: white;
+  background-color: #d12200;
+  border-radius: 50px;
+  width: 300px;
+  height: 3em;
+  font-size: 20px;
+  padding: 10px;
+  margin-top: 40px;
+  cursor: pointer;
+  outline: none;
+}
+
+.search-btn:hover {
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+.search-btn:hover {
+  color: white;
+  background-color: #f5b812;
+  border-radius: 50px;
+  width: 300px;
+  height: 3em;
+  font-size: 20px;
+  padding: 10px;
+  margin-top: 40px;
+  cursor: pointer;
+}
+
+.para-image img {
+  float: center;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 400px;
+  margin: 40px;
+  border-radius: 2em;
+  object-fit: cover;
+}
+
+.para-text {
+  margin: -40px 40px 40px 40px;
+}
+
+.top-para h3 {
+  text-transform: uppercase;
+  color: #d12200;
+  font-size: 50px;
+}
+
+.top-para p {
+  line-height: 40px;
+  margin-top: -20px;
+}
+
+.bottom-para h6 {
+  text-transform: uppercase;
+  color: #d12200;
+  font-size: 35px;
+  margin: 0;
+}
+
+.bottom-para p {
+  line-height: 40px;
+  margin-top: 20px;
+}
