@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Notice;
+use App\Gallery;
+use App\Testimonial;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -27,7 +29,9 @@ class HomeController extends Controller
     public function index()
     {
         $notices = Notice::all();
-        return view('admin.index', compact('notices'));
+        $gallery = Gallery::all();
+        $testimonial = Testimonial::all();
+        return view('admin.index', compact('notices','gallery','testimonial'));
     }
 
     public function logout()
