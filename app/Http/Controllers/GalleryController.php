@@ -2,14 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Gallery;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
-use function foo\func;
 
 class GalleryController extends Controller
 {
+    protected $gallery = null;
+
+    public function __construct(Gallery $gallery)
+
+    {
+        $this->gallery = $gallery;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,10 +23,10 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        $gallery = Gallery::all();
-        $page='gallery';
-        return view('gallery.index', compact('gallery','page'));
 
+        $gallery = Gallery::all();
+        $page = 'gallery';
+        return view('gallery.index', compact('gallery', 'page'));
     }
 
     /**
@@ -30,6 +36,7 @@ class GalleryController extends Controller
      */
     public function create()
     {
+
         return view('gallery.create');
     }
 
@@ -41,42 +48,31 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {
-        $rules = array(
-            'title'=>'required',
-            'description' => 'required',
-            'image' => 'required|file|image|max:5000'
-        );
 
-        $validator = Validator::make(request()->all(), $rules);
+        $validator = Validator::make(request()->all(), $this->gallery->getRules());
 
         if ($validator->fails()) {
 
             return back()->with('toast_warning', $validator->messages()->all()[0])->withInput();
-
         } else {
-            $gallery = new Gallery();
-            $request->validate($rules);
-            $form = $request->all();
-            $success = $gallery->fill($form)->save();
+            $request->validate($this->gallery->getRules());
+            $form = $request->except('profile');
+            $form['profile'] = storeImage(request()->profile, 'gallery');
+            $success = $this->gallery->fill($form)->save();
 
-            $this->storeImage($gallery);
 
-            return redirect()->route('gallery.index')->with('toast_success', 'Image was added!');
+            return redirect()->route('gallery.index')->with('toast_success', 'Gallery was added!');
         }
-
     }
 
 
-    private function storeImage($gallery)
-    {
-        if (request()->has('image')) {
-            $gallery->update([
 
-                'image' => request()->image->store('uploads', 'public')
-            ]);
-        }
-
-    }
+    // public function search(Request $request)
+    // {
+    //     $search = $request->get('search');
+    //     $gallery = DB::table('gallery')->where('profile', 'like', '%' . $search . '%')->orWhere('name', 'like', '%' . $search . '%')->orWhere('gallery', 'like', '%' . $search . '%')->orWhere('role', 'like', '%' . $search . '%')->paginate(100);
+    //     return view('gallery.index', ['gallery' => $gallery]);
+    // }
 
     /**
      * Display the specified resource.
@@ -84,18 +80,11 @@ class GalleryController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public
-    function show($id)
+
+    public function show()
     {
         return view('gallery.show');
     }
-
-    // public function search(Request $request)
-    // {
-    //      $search = $request->get('search');
-    //      $gallery = DB::table('galleries')->where('title', 'like', '%'.$search.'%')->orWhere('description', 'like', '%'.$search.'%')->orWhere('image', 'like', '%'.$search.'%')->paginate(100);
-    //      return view('gallery.index',['gallery'=>$gallery]);
-    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -105,9 +94,8 @@ class GalleryController extends Controller
      */
     public function edit($id)
     {
-        $galleries = Gallery::find($id);
-
-        return view('gallery.edit', compact('galleries'));
+        $gallery = Gallery::find($id);
+        return view('gallery.edit', compact('gallery'));
     }
 
     /**
@@ -115,35 +103,40 @@ class GalleryController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Responset
      */
-    public
-    function update(Request $request, $id)
+    public function update(Request $request, $id)
     {
-        $rules = array(
-            'title' => 'required',
-            'description' => 'required',
 
-        );
-
-        $validator = Validator::make(request()->all(), $rules);
+        $validator = Validator::make(request()->all(), $this->gallery->getRules("update"));
 
         if ($validator->fails()) {
 
             return back()->with('toast_warning', $validator->messages()->all()[0])->withInput();
+        } else 
+        {
 
-        } else {
+            $gallery = $this->gallery->findOrFail($id);
+            $request->validate($this->gallery->getRules());
+            $form = $request->except('profile');
+            if (request()->has('profile')) {
+                $form['profile'] = storeImage(request()->profile);
+                $oldprofiles = $gallery->profile;
+            }
+            $success = $gallery->fill($form)->save();
+            if($success && request()->has('profile')){
 
-            $gallery = Gallery::findOrFail($id);
-            $request->validate($rules);
-            $gallery->fill($request->all());
-            $gallery->update();
-            $this->storeImage($gallery);
+                foreach(explode(',',$oldprofiles) as $oldprofile)
 
-            return redirect()->route('gallery.index')->with('toast_success', 'Image was edited!');
+                {
+                    deleteFile($oldprofile);
+                }
+                
+            }
+
+            return redirect()->route('gallery.index')->with('toast_success', 'Gallery was edited!');
         }
     }
-
 
     /**
      * Remove the specified resource from storage.
@@ -151,11 +144,12 @@ class GalleryController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public
-    function destroy($id)
+
+    public function destroy($id)
     {
         $delete = Gallery::find($id);
-        $delete->delete();
-        return redirect()->route('gallery.index')->with('toast_error', 'Image was deleted!');
+        if ($delete->delete()) {
+            return redirect()->route('gallery.index')->with('toast_error', 'Gallery was deleted!');
+        }
     }
 }

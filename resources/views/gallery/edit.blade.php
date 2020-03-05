@@ -37,8 +37,8 @@
                                 <label for="image" class="col-md-4 col-form-label text-md-right"
                                        required>{{ __('Image') }} </label>
                                 <div class="col-md-6">
-                                    <input type="file" id="image" class="form-control"
-                                           value="{{asset('storage/'. $galleries->image)}}" name="image"
+                                    <input type="file" id="profile" class="form-control"
+                                           value="{{asset('storage/'. $galleries->image)}}" name="profile[]"
                                            placeholder="Upload Image">
                                 </div>
                             </div>

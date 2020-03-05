@@ -35,7 +35,7 @@
                                 <label for="image"
                                        class="col-md-4 col-form-label text-md-right">{{ __('Image') }}</label>
                                 <div class="col-md-6">
-                                    <input type="file" id="profile" class="form-control" name="profile"
+                                    <input type="file" id="profile" class="form-control" name="profile[]"
                                            autofocus placeholder="Upload image" multiple>
                                 </div>
                             </div>

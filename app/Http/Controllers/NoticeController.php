@@ -6,10 +6,16 @@ use App\Notice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
-use Mockery\Matcher\Not;
 
 class NoticeController extends Controller
 {
+    protected $notices = null;
+
+    public function __construct(Notice $notices)
+
+    {
+        $this->notices = $notices;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,9 +23,10 @@ class NoticeController extends Controller
      */
     public function index()
     {
+
         $notices = Notice::all();
-        $page='notice';
-        return view('notice.index', compact('notices','page'));
+        $page = 'notices';
+        return view('notice.index', compact('notices', 'page'));
     }
 
     /**
@@ -41,44 +48,29 @@ class NoticeController extends Controller
      */
     public function store(Request $request)
     {
-        $rules = array(
-            'category' => 'required',
-            'title' => 'required',
-            'description' => 'required',
-            'file' => 'required|file'
-        );
 
-        $validator = Validator::make(request()->all(), $rules);
+        $validator = Validator::make(request()->all(), $this->notices->getRules());
 
         if ($validator->fails()) {
+
             return back()->with('toast_warning', $validator->messages()->all()[0])->withInput();
         } else {
-
-            $notices = new Notice();
-            $request->validate($rules);
+            $request->validate($this->notices->getRules());
             $form = $request->except('file');
-            $form['file'] = storeImage(request()->file);
-            $success = $notices->fill($form)->save();
-            
-        }
+            $form['file'] = storeImage(request()->file, 'notices');
+            $success = $this->notices->fill($form)->save();
 
-        return redirect()->route('notice.index')->with('toast_success', 'Notice was added!');
-    }
 
-    private function storeFile($notices)
-    {
-        if (request()->has('file')) {
-            $notices->update([
-
-                'file' => request()->file->store('uploads', 'public')
-            ]);
+            return redirect()->route('notice.index')->with('toast_success', 'Notice was added!');
         }
     }
+
+
 
     // public function search(Request $request)
     // {
     //     $search = $request->get('search');
-    //     $notices = DB::table('notices')->where('title', 'like', '%' . $search . '%')->orWhere('category', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->orWhere('file', 'like', '%' . $search . '%')->paginate(100);
+    //     $notices = DB::table('notices')->where('file', 'like', '%' . $search . '%')->orWhere('name', 'like', '%' . $search . '%')->orWhere('notices', 'like', '%' . $search . '%')->orWhere('role', 'like', '%' . $search . '%')->paginate(100);
     //     return view('notice.index', ['notices' => $notices]);
     // }
 
@@ -88,6 +80,7 @@ class NoticeController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
+
     public function show()
     {
         return view('notice.show');
@@ -101,10 +94,7 @@ class NoticeController extends Controller
      */
     public function edit($id)
     {
-
-
         $notices = Notice::find($id);
-
         return view('notice.edit', compact('notices'));
     }
 
@@ -113,27 +103,36 @@ class NoticeController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Responset
      */
     public function update(Request $request, $id)
     {
-        $rules = array(
-            'category' => 'required',
-            'title' => 'required',
-            'description' => 'required',
-        );
 
-        $validator = Validator::make(request()->all(), $rules);
+        $validator = Validator::make(request()->all(), $this->notices->getRules("update"));
 
         if ($validator->fails()) {
-            return back()->with('toast_warning', $validator->messages()->all()[0])->withInput();
-        } else {
 
-            $notices = Notice::findOrFail($id);
-            $request->validate($rules);
-            $notices->fill($request->all());
-            $notices->update();
-            $this->storeFile($notices);
+            return back()->with('toast_warning', $validator->messages()->all()[0])->withInput();
+        } else 
+        {
+
+            $notices = $this->notices->findOrFail($id);
+            $request->validate($this->notices->getRules());
+            $form = $request->except('file');
+            if (request()->has('file')) {
+                $form['file'] = storeImage(request()->file);
+                $oldimages = $notices->file;
+            }
+            $success = $notices->fill($form)->save();
+            if($success && request()->has('file')){
+
+                foreach(explode(',',$oldimages) as $oldimage)
+
+                {
+                    deleteFile($oldimage);
+                }
+                
+            }
 
             return redirect()->route('notice.index')->with('toast_success', 'Notice was edited!');
         }
@@ -145,11 +144,12 @@ class NoticeController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
+
     public function destroy($id)
     {
-        $delete = Notice::findOrFail($id);
-        if ($delete->delete())
-
+        $delete = Notice::find($id);
+        if ($delete->delete()) {
             return redirect()->route('notice.index')->with('toast_error', 'Notice was deleted!');
+        }
     }
 }

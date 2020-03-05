@@ -22,7 +22,6 @@
                             <th>Title</th>
                             <th>Description</th>
                             <th>File</th>
-                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -33,22 +32,10 @@
                             <td>{{$form->title}}</td>
                             <td>{!!$form->description!!}</td>
                             <td><a href="{{asset('storage/'. $form->file)}}">{{$form->file}}</a></td>
-                            <td><a href="{{route('notice.edit', $form->id)}}">
-                                    <button type="button" class="btn btn-primary" style="margin-right:2em;"><i
-                                            class="fa fa-edit"></i></button>
-                                </a>
-
-                                @include('layouts.delete-item')
-
-                                <a href="javascript:;" data-toggle="modal" onclick="deleteData({{$form->id}})"
-                                    data-target="#DeleteModal" class="btn btn-danger"><i class="fa fa-trash"></i></a>
-                            </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
-                <a href="{{ route('notice.create')}}">
-                    <button type="button" class="btn btn-success" style="margin-top:2em; ">Add Notices</button></a>
             </div>
         </div>
     </div>
@@ -83,7 +70,6 @@
                         <th> Title</th>
                         <th> Description</th>
                         <th> Image</th>
-                        <th> Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -102,20 +88,10 @@
                             </a>
 
                             @endforeach
-                        <td>
-                            <a href="{{route('gallery.edit',$form->id)}}" class="btn btn-primary"
-                                style="margin-right:2em;"><i class="fa fa-edit"></i></a>
-                            @include('layouts.delete-item')
-
-                            <a href="javascript:;" data-toggle="modal" onclick="deleteData({{$form->id}})"
-                                data-target="#DeleteModal" class="btn btn-danger"><i class="fa fa-trash"></i></a>
-                        </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
-            <a href="{{ route('gallery.create')}}">
-                <button type="button" class="btn btn-success" style="margin-top:2em;">Add Images</button></a>
         </div>
     </div>
 
@@ -151,7 +127,6 @@ function formSubmit() {
                             <th>Name</th>
                             <th>Testimonial</th>
                             <th>Role</th>
-                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -170,30 +145,15 @@ function formSubmit() {
 
                                 @endforeach
 
-
                             </td>
                             <td>{{$form->name}}</td>
                             <td>{!! $form->testimonial !!}</td>
                             <td>{{$form->role}}</td>
-                            <td><a href="{{ route('testimonials.edit', $form->id) }}">
-                                    <button type="button" class="btn btn-primary" style="margin-right:2em;"><i
-                                            class="fa fa-edit"></i></button>
-                                </a>
-
-                                @include('layouts.delete-item')
-
-                                <a href="javascript:;" data-toggle="modal" onclick="deleteData({{$form->id}})"
-                                    data-target="#DeleteModal" class="btn btn-danger"><i class="fa fa-trash"></i></a>
-                            </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </div>
             </table>
-            <a href="{{ route('testimonials.create')}}">
-                <button type="button" class="btn btn-success" style="margin-top:2em;">Add Testimonials</button>
-            </a>
-
         </div>
     </div>
 </div>

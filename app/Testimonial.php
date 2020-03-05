@@ -11,14 +11,14 @@ class Testimonial extends Model
     public function getRules($act="add")
     {
         $rules = array(
-            'profile.*' => 'mimes:jpeg,bmp,png|required|file|image|max:5000',
+            'profile.*' => 'required|file|image|max:5000',
             'name' => 'required',
             'testimonial' => 'required',
             'role' => 'required'
         );
 
         if($act="update") {
-            $rules['profile.*'] = 'sometimes|mimes:jpeg,bmp,png|file|image|max:5000';
+            $rules['profile.*'] = 'sometimes|file|image|max:5000';
         }
 
         return $rules;

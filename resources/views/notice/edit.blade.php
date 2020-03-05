@@ -63,7 +63,7 @@
 
                                 <div class="col-md-6">
                                     <input type="file" value="{{$notices->file}}" placeholder="Upload File" id="file"
-                                           class="form-control" name="file">
+                                           class="form-control" name="file[]" multiple>
                                 </div>
                             </div>
 

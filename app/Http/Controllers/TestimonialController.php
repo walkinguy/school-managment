@@ -29,50 +29,6 @@ class TestimonialController extends Controller
         return view('testimonials.index', compact('testimonial', 'page'));
     }
 
-    public function load_data(Request $request)
-    {
-        if ($request->ajax()) {
-            if ($request->id > 0) {
-                $data = DB::table('testimonials')
-                    ->where('id', '<', $request->id)
-                    ->limit(5)
-                    ->get();
-            } else {
-                $data = DB::table('testimonials')
-                    ->limit(5)
-                    ->get();
-            }
-            $output = '';
-            $last_id = '';
-
-            if (!$data->isEmpty()) {
-                foreach ($data as $row) {
-                    $output .= '
-                                <p><a href="' . 'storage/' . $row->profile . '" target="_blank">
-                                        <img src="' . 'storage/' . $row->profile . '" class="img-thumbnail" style="height: auto; max-width:50px">
-                                    </a>
-                                </p>
-                                <p>' . $row->name . '</p>
-                                <p>' . $row->testimonial . '</p>
-                                <p>' . $row->role . '</p>
-        ';
-                }
-                $output .= '
-       <div id="load_more">
-        <button type="button" name="load_more_button" class="btn btn-success form-control" id="load_more_button">Load More</button>
-       </div>
-       ';
-            } else {
-                $output .= '
-       <div id="load_more">
-        <button type="button" name="load_more_button" class="btn btn-info form-control">No Data Found</button>
-       </div>
-       ';
-            }
-            echo $output;
-        }
-    }
-
     /**
      * Show the form for creating a new resource.
      *

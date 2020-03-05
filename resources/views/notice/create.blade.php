@@ -56,7 +56,7 @@
 
                                 <div class="col-md-6">
                                     <input type="file" placeholder="Upload File" id="file" class="form-control"
-                                           name="file">
+                                           name="file[]" multiple>
                                 </div>
                             </div>
 
