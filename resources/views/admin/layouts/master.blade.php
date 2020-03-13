@@ -189,6 +189,9 @@
                         <li>
                             <a href="{{url('gallery')}}">Gallery</a>
                         </li>
+                        <li>
+                            <a href="{{url('frontends')}}">Frontend</a>
+                        </li>
                     </ul>
                 </li>
             </ul>

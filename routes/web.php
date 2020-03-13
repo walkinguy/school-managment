@@ -10,7 +10,7 @@ Route::get('/', function () {
 Route::resource('testimonials','TestimonialController');
 Route::resource('notice','NoticeController');
 Route::resource('gallery','GalleryController');
-Route::resource('website','WebController');
+Route::resource('frontends','FrontendController');
 Auth::routes();
 
 Route::get('dashboard', 'HomeController@index');
