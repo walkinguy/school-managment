@@ -6,12 +6,6 @@ Route::get('/', function () {
 
 });
 
-Route::get('/test', function () {
-
-    return view('test');
-
-});
-
 
 Route::resource('testimonials','TestimonialController');
 Route::resource('notice','NoticeController');
@@ -26,6 +20,3 @@ Route::get('logout', 'HomeController@logout');
 // Route::get('/search-notice','NoticeController@search');
 // Route::get('/search-gallery','GalleryController@search');
 // Route::get('/search-testimonial','TestimonialController@search');
-
-
-Route::post('/testimonials/load_data', 'TestimonialController@load_data')->name('testimonial.load_data');

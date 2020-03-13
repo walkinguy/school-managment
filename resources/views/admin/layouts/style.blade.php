@@ -34,7 +34,7 @@
     <script src="{{asset('assets/js/scripts/dashboard_1_demo.js')}}" type="text/javascript"></script>
     <script type="text/javascript">
       $(function() {
-          $('#example-table').DataTable({
+          $('.table').DataTable({
               pageLength: 10,
               //"ajax": './assets/demo/data/table_data.json',
               /*"columns": [

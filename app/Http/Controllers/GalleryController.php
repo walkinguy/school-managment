@@ -81,9 +81,10 @@ class GalleryController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function show()
+    public function show($id)
     {
-        return view('gallery.show');
+        $gallery = Gallery::findOrFail($id);
+        return view('gallery.show',compact('gallery'));
     }
 
     /**

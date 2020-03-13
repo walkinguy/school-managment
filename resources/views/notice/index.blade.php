@@ -44,6 +44,10 @@
                                             class="fa fa-edit"></i></button>
                                 </a>
 
+                                <a href="{{ route('notice.show', $form->id) }}">
+                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#showModal" style="margin-right:2em;"><i class="fa fa-eye"></i></button>
+                                </a>
+
                                 @include('layouts.delete-item')
 
                                 <a href="javascript:;" data-toggle="modal" onclick="deleteData({{$form->id}})"

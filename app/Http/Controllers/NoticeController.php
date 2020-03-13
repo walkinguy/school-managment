@@ -81,9 +81,10 @@ class NoticeController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function show()
+    public function show($id)
     {
-        return view('notice.show');
+        $notices = Notice::findOrFail($id);
+        return view('notice.show',compact('notices'));
     }
 
     /**

@@ -26,6 +26,7 @@ class TestimonialController extends Controller
 
         $testimonial = Testimonial::all();
         $page = 'testimonial';
+
         return view('testimonials.index', compact('testimonial', 'page'));
     }
 
@@ -58,10 +59,12 @@ class TestimonialController extends Controller
             $request->validate($this->testimonial->getRules());
             $form = $request->except('profile');
             $form['profile'] = storeImage(request()->profile, 'testimonial');
-            $success = $this->testimonial->fill($form)->save();
 
+            if($success = $this->testimonial->fill($form)->save()){
 
             return redirect()->route('testimonials.index')->with('toast_success', 'Testimonial was added!');
+
+            }
         }
     }
 
@@ -81,9 +84,10 @@ class TestimonialController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function show()
+    public function show($id)
     {
-        return view('testimonials.show');
+        $testimonial = Testimonial::findOrFail($id);
+        return view('testimonials.show',compact('testimonial'));
     }
 
     /**
@@ -94,7 +98,7 @@ class TestimonialController extends Controller
      */
     public function edit($id)
     {
-        $testimonial = Testimonial::find($id);
+        $testimonial = Testimonial::findOrFail($id);
         return view('testimonials.edit', compact('testimonial'));
     }
 
@@ -147,7 +151,7 @@ class TestimonialController extends Controller
 
     public function destroy($id)
     {
-        $delete = Testimonial::find($id);
+        $delete = Testimonial::findOrFail($id);
         if ($delete->delete()) {
             return redirect()->route('testimonials.index')->with('toast_error', 'Testimonial was deleted!');
         }

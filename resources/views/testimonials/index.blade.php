@@ -41,7 +41,11 @@
                                     <td><a href="{{ route('testimonials.edit', $form->id) }}">
                                             <button type="button" class="btn btn-primary" style="margin-right:2em;"><i class="fa fa-edit"></i></button>
                                         </a>
-    
+
+                                    <a href="{{route('testimonials.show', $form->id)}}">
+                                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#showModal" style="margin-right:2em;"><i class="fa fa-eye"></i></button>
+                                        </a>
+
                                         @include('layouts.delete-item')
     
                                         <a href="javascript:;" data-toggle="modal" onclick="deleteData({{$form->id}})"
@@ -52,9 +56,12 @@
                             </tbody>
                            </div>
                     </table>
-                    <a href="{{ route('testimonials.create')}}">
-                        <button type="button" class="btn btn-success" style="margin-top:2em;">Add Testimonials</button>
+                    
+                    <a href="#">
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#showModal" style="margin-top:2em;">Add Testimonials</button>
                     </a>
+
+                    @include('testimonials.addModal')
 
                 </div>
             </div>
@@ -73,33 +80,5 @@
         function formSubmit() {
             $("#deleteForm").submit();
         }
-
-        // $(document).ready(function(){
- 
-        // var _token = $('input[name="_token"]').val();
-
-        // load_data('', _token);
-
-        // function load_data(id="", _token)
-        // {
-        // $.ajax({
-        // url:"{{ route('testimonial.load_data') }}",
-        // method:"POST",
-        // data:{id:id, _token:_token},
-        // success:function(data)
-        // {
-        //     $('#load_more_button').remove();
-        //     $('#post_data').append(data);
-        // }
-        // })
-        // }
-
-        // $(document).on('click', '#load_more_button', function(){
-        // var id = $(this).data('id');
-        // $('#load_more_button').html('<b>Loading...</b>');
-        // load_data(id, _token);
-        // });
-
-        // });
     </script>
 @endsection

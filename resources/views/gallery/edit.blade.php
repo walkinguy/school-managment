@@ -13,14 +13,14 @@
                         </div>
                     </div>
                     <div class="ibox-body">
-                        <form method="POST" action="{{ route('gallery.update', $galleries->id) }}" name="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('gallery.update', $gallery->id) }}" name="form" enctype="multipart/form-data">
                             @csrf
                             @method("PUT")
                             <div class="form-group row">
                                 <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Title') }}</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" value="{{$galleries->title}}" id="title" class="form-control" name="title" autocomplete="title"
+                                    <input type="text" value="{{$gallery->title}}" id="title" class="form-control" name="title" autocomplete="title"
                                            placeholder="Enter image title">
                                 </div>
                             </div>
@@ -30,7 +30,7 @@
                                 <div class="col-md-6">
                                     <textarea id="summernote" class="form-control"
                                               name="description" placeholder="Enter your image description"
-                                              autocomplete="description" autofocus>{{$galleries->description}}</textarea>
+                                              autocomplete="description" autofocus>{{$gallery->description}}</textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -38,7 +38,7 @@
                                        required>{{ __('Image') }} </label>
                                 <div class="col-md-6">
                                     <input type="file" id="profile" class="form-control"
-                                           value="{{asset('storage/'. $galleries->image)}}" name="profile[]"
+                                           value="{{asset('storage/'. $gallery->image)}}" name="profile[]"
                                            placeholder="Upload Image">
                                 </div>
                             </div>

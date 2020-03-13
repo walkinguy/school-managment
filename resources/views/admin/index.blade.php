@@ -40,19 +40,6 @@
         </div>
     </div>
 
-    <script type="text/javascript">
-        function deleteData(id) {
-        var id = id;
-        var url = '{{ route("notice.destroy",":id") }}';
-        url = url.replace(':id', id);
-        $("#deleteForm").attr('action', url);
-    }
-
-    function formSubmit() {
-        $("#deleteForm").submit();
-    }
-    </script>
-
     <div class="ibox ibox-success">
         <div class="ibox-head">
             <div class="ibox-title">Gallery Table</div>
@@ -94,19 +81,6 @@
             </table>
         </div>
     </div>
-
-    <script type="text/javascript">
-        function deleteData(id) {
-    var id = id;
-    var url = '{{ route("gallery.destroy",":id") }}';
-    url = url.replace(':id', id);
-    $("#deleteForm").attr('action', url);
-}
-
-function formSubmit() {
-    $("#deleteForm").submit();
-}
-    </script>
 
 
     <div class="ibox ibox-success">
