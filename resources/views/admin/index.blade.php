@@ -9,7 +9,6 @@
                 <div class="ibox-title">Notices Table</div>
                 <div class="ibox-tools">
                     <a class="ibox-collapse"><i class="fa fa-minus"></i></a>
-                    <a class="ibox-remove"><i class="fa fa-times"></i></a>
                 </div>
             </div>
             <div class="ibox-body">
@@ -31,7 +30,7 @@
                             <td>{{$form->category}}</td>
                             <td>{{$form->title}}</td>
                             <td>{!!$form->description!!}</td>
-                            <td><a href="{{asset('storage/'. $form->file)}}">{{$form->file}}</a></td>
+                            <td><a href="{{asset('storage/'. $form->file)}}"><i class="fa fa-file-text"></i></a></td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -45,7 +44,7 @@
             <div class="ibox-title">Gallery Table</div>
             <div class="ibox-tools">
                 <a class="ibox-collapse"><i class="fa fa-minus"></i></a>
-                <a class="ibox-remove"><i class="fa fa-times"></i></a>
+
             </div>
         </div>
         <div class="ibox-body">
@@ -88,7 +87,7 @@
             <div class="ibox-title">Testimonials Table</div>
             <div class="ibox-tools">
                 <a class="ibox-collapse"><i class="fa fa-minus"></i></a>
-                <a class="ibox-remove"><i class="fa fa-times"></i></a>
+
             </div>
         </div>
         <div class="ibox-body">

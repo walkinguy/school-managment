@@ -15,9 +15,13 @@
                 </div>
                 <div class="modal-body">
                     <div class="card">
-                        <a href="{{asset('storage/'. $gallery->profile)}}" target="_blank">
-                                            <img class="card-img-top" src="{{asset('storage/'. $gallery->profile)}}">
-                                        </a>
+                        @foreach (explode(',',$gallery->profile) as $profile)
+
+                            <a href="{{asset('storage/'. $profile)}}" target="_blank">
+                                <img src="{{asset('storage/'. $profile)}}" class="img-thumbnail" style="height:50px; width:50px; object-fit:cover;">
+                            </a>
+
+                        @endforeach
                         <div class="card-body">
                             <h5 class="card-title">{{$gallery->title}}</h5>
                         <div>{{$gallery->description}}</div>

@@ -47,7 +47,7 @@
                                         </a>
 
                                         @include('layouts.delete-item')
-    
+
                                         <a href="javascript:;" data-toggle="modal" onclick="deleteData({{$form->id}})"
                                            data-target="#DeleteModal" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                     </td>
@@ -56,9 +56,9 @@
                             </tbody>
                            </div>
                     </table>
-                    
+
                     <a href="#">
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#showModal" style="margin-top:2em;">Add Testimonials</button>
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addModal" style="margin-top:2em;">Add Testimonials</button>
                     </a>
 
                     @include('testimonials.addModal')

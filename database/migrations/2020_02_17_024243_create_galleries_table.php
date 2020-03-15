@@ -17,7 +17,7 @@ class CreateGalleriesTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('description');
-            $table->string('profile')->nullable();
+            $table->longText('profile')->nullable();
             $table->timestamps();
         });
     }
