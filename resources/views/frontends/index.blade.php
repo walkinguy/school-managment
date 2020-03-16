@@ -38,6 +38,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#" style="color:white;">About us</a>
                     </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{url('/dashboard')}}" style="color:white;
+                    hover: color:black;
+                    ">Admin login</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" style="color:white;" href="#" id="navbarDropdown"
                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -134,7 +139,7 @@
                                 <img src="{{asset('frontend/images/gal4.jpg')}}" class="img-fluid"
                                      style="object-fit: cover; width:100%; height:10em;">
                             </a>
-                        </div>
+                         </div>
                         <div class="col-sm-3">
                             <a href="{{asset('frontend/images/gal1.jpeg')}}" target="_blank">
                                 <img src="{{asset('frontend/images/gal1.jpeg')}}" class="img-fluid"

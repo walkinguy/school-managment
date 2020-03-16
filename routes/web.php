@@ -2,7 +2,7 @@
 
 Route::get('/', function () {
 
-    return view('welcome');
+    return view('frontends.index');
 
 });
 
@@ -10,7 +10,7 @@ Route::get('/', function () {
 Route::resource('testimonials','TestimonialController');
 Route::resource('notice','NoticeController');
 Route::resource('gallery','GalleryController');
-Route::resource('frontends','FrontendController');
+Route::resource('/','FrontendController');
 Auth::routes();
 
 Route::get('dashboard', 'HomeController@index');

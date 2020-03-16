@@ -18,20 +18,20 @@
                 <li>
                     <a class="nav-link sidebar-toggler js-sidebar-toggler"><i class="ti-menu"></i></a>
                 </li>
-                <li>
-                    {{-- <form class="navbar-search" action="javascript:;">
+                {{-- <li>
+                    <form class="navbar-search" action="javascript:;">
                         <div class="rel">
                             <span class="search-icon"><i class="ti-search"></i></span>
                             <input class="form-control" name="search" placeholder="Search here...">
                             <button class="d-none" type=submit" value="search">
                         </div>
-                    </form> --}}
-                </li>
+                    </form>
+                </li> --}}
             </ul>
             <!-- END TOP-LEFT TOOLBAR-->
             <!-- START TOP-RIGHT TOOLBAR-->
             <ul class="nav navbar-toolbar">
-                <li class="dropdown dropdown-inbox">
+                {{-- <li class="dropdown dropdown-inbox">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope-o"></i>
                         <span class="badge badge-primary envelope-badge">9</span>
                     </a>
@@ -142,15 +142,15 @@
                             </div>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
                 <li class="dropdown dropdown-user">
                     <a class="nav-link dropdown-toggle link" data-toggle="dropdown">
                         <img src="{{asset('assets/img/admin-avatar.png')}}" />
                         <span></span>Admin<i class="fa fa-angle-down m-l-5"></i></a>
                     <ul class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="profile.html"><i class="fa fa-user"></i>Profile</a>
+                        {{-- <a class="dropdown-item" href="profile.html"><i class="fa fa-user"></i>Profile</a>
                         <a class="dropdown-item" href="profile.html"><i class="fa fa-cog"></i>Settings</a>
-                        <a class="dropdown-item" href="javascript:;"><i class="fa fa-support"></i>Support</a>
+                        <a class="dropdown-item" href="javascript:;"><i class="fa fa-support"></i>Support</a> --}}
                         <li class="dropdown-divider"></li>
                         <a class="dropdown-item" href="{{url('/logout')}}"><i class="fa fa-power-off"></i>Logout</a>
                     </ul>
@@ -189,9 +189,9 @@
                         <li>
                             <a href="{{url('gallery')}}">Gallery</a>
                         </li>
-                        <li>
-                            <a href="{{url('frontends')}}">Frontend</a>
-                        </li>
+                        {{-- <li>
+                            <a href="{{url('')}}">Frontend</a>
+                        </li> --}}
                     </ul>
                 </li>
             </ul>
@@ -208,7 +208,7 @@
     <div class="theme-config-toggle"><i class="fa fa-cog theme-config-show"></i><i class="ti-close theme-config-close"></i></div>
     <div class="theme-config-box">
         <div class="text-center font-18 m-b-20">SETTINGS</div>
-        <div class="font-strong">LAYOUT OPTIONS</div>
+        {{-- <div class="font-strong">LAYOUT OPTIONS</div>
         <div class="check-list m-b-20 m-t-10">
             <label class="ui-checkbox ui-checkbox-gray">
                 <input id="_fixedNavbar" type="checkbox" checked>
@@ -228,7 +228,7 @@
             <label class="ui-radio ui-radio-gray">
                 <input type="radio" name="layout-style" value="1">
                 <span class="input-span"></span>Boxed</label>
-        </div>
+        </div> --}}
         <div class="m-t-10 m-b-10 font-strong">THEME COLORS</div>
         <div class="d-flex m-b-20">
             <div class="color-skin-box" data-toggle="tooltip" data-original-title="Default">

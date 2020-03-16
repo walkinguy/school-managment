@@ -8,7 +8,7 @@
                         <div class="ibox-title">Enter Testimonials</div>
                         <div class="ibox-tools">
                             <a class="ibox-collapse"><i class="fa fa-minus"></i></a>
-                            <a class="ibox-remove"><i class="fa fa-times"></i></a>
+                            
                         </div>
                     </div>
                     <div class="ibox-body">

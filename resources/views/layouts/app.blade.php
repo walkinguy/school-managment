@@ -43,7 +43,7 @@
                         <!-- Authentication Links -->
                         @guest
 
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a class="nav-link" href="{{ route('testimonials.index') }}">{{ __('Testimonials') }}</a>
                                 </li>
 
@@ -53,7 +53,7 @@
 
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('gallery.index') }}">{{ __('Gallery') }}</a>
-                            </li>
+                            </li> --}}
 
                             <li class="nav-item">
                                     <a class="nav-link" style="color:#3490dc; font-weight: bold;" href="{{ route('login') }}">{{ __('Login') }}</a>

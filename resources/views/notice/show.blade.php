@@ -3,7 +3,7 @@
 
 <div class="content-wrapper">
     <div class="page-content fade-in-up">
-        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#showModal" style="margin-right:2em;"><i class="fa fa-eye"></i></button>
+        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#showModal" style="margin-right:2em;">TAP TO VIEW DETAILS  <i class="fa fa-eye"></i></button>
         <div class="modal fade" id="showModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
