@@ -52,6 +52,10 @@
                     </table>
                     <a href="{{ route('gallery.create')}}">
                         <button type="button" class="btn btn-success" style="margin-top:2em;">Add Images</button>
+                    </a>
+                    <a href="{{url('/sbk/gallery')}}">
+                        <button type="button" class="btn btn-success" style="margin-top:2em;">View on Frontend</button>
+                    </a>
                 </div>
             </div>
         </div>

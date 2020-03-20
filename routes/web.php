@@ -11,6 +11,10 @@ Route::resource('testimonials','TestimonialController');
 Route::resource('notice','NoticeController');
 Route::resource('gallery','GalleryController');
 Route::resource('/','FrontendController');
+Route::get('/sbk/gallery','FrontendController@gallery');
+Route::get('/sbk/about','FrontendController@about');
+Route::get('/sbk/notice','FrontendController@notice');
+
 Auth::routes();
 
 Route::get('dashboard', 'HomeController@index');

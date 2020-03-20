@@ -189,9 +189,12 @@
                         <li>
                             <a href="{{url('gallery')}}">Gallery</a>
                         </li>
+                        <li>
+                            <a href="{{url('/')}}">Frontend</a>
+                        </li>
                         {{-- <li>
                             <a href="{{url('')}}">Frontend</a>
-                        </li> --}}
+                        </li> --}} 
                     </ul>
                 </li>
             </ul>

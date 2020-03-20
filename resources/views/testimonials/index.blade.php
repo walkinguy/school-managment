@@ -60,6 +60,9 @@
                     <a href="#">
                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addModal" style="margin-top:2em;">Add Testimonials</button>
                     </a>
+                    <a href="{{url('/sbk/testimonials')}}">
+                        <button type="button" class="btn btn-success" style="margin-top:2em;">View on Frontend</button>
+                    </a>
 
                     @include('testimonials.addModal')
 

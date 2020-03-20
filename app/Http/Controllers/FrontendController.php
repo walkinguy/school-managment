@@ -19,7 +19,7 @@ class FrontendController extends Controller
         $testimonial = Testimonial::all();
         $gallery = Gallery::all();
         $notices = Notice::all();
-        return view('frontends.index', compact('testimonial','gallery','notices'));
+        return view('frontends.index', compact('testimonial', 'gallery', 'notices'));
     }
 
     /**
@@ -35,7 +35,7 @@ class FrontendController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -46,7 +46,7 @@ class FrontendController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -57,7 +57,7 @@ class FrontendController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -68,8 +68,8 @@ class FrontendController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -80,11 +80,22 @@ class FrontendController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
+    }
+
+    public function gallery()
+    {
+        $gallery = Gallery::all();
+        return view('frontends.gallery', compact('gallery'));
+    }
+    public function notice()
+    {
+        $notices = Notice::all();
+        return view('frontends.notice', compact('notices'));
     }
 }

@@ -59,6 +59,10 @@
                 </table>
                 <a href="{{ route('notice.create')}}">
                     <button type="button" class="btn btn-success" style="margin-top:2em; ">Add Notices</button>
+                </a>
+                <a href="{{url('/sbk/notice')}}">
+                    <button type="button" class="btn btn-success" style="margin-top:2em;">View on Frontend</button>
+                </a>
             </div>
         </div>
     </div>
